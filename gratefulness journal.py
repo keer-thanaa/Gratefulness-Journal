@@ -55,6 +55,7 @@ with st.form("journal_form"):
     kind = st.text_input("I was kind to someone today by:")
     learned = st.text_input("Something I learnt today:")
     color = st.color_picker("Pick a marble color:", "#FF69B4")
+    rating = st.slider("Rate your day (1 = Bad, 10 = Amazing)", 1, 10, 5)
 
     submitted = st.form_submit_button("Add to Happiness Jar")
 
@@ -70,8 +71,11 @@ if submitted:
         "Laugh": laugh,
         "Kindness": kind,
         "Learned": learned,
-        "Color": color
+        "Color": color,
+        "Rating": rating
     }
     st.session_state.entries.append(entry)
     st.success("Added to your Happiness Jar! 💖")
+    st.rerun()
+
     st.rerun()
